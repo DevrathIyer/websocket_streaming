@@ -15,17 +15,18 @@
         ws.onopen = () => console.log(`Connected to ${WS_URL}`);
         ws.onmessage = message => {
 
-          var node = document.createElement("p");
-          var textnode = document.createTextNode(message.data);
-          node.appendChild(textnode);
-          document.getElementById("messages").appendChild(node);
-
           let reader=new FileReader()
           reader.addEventListener('loadend',()=>{
             let contents=reader.result
             img.src = contents
-          })
-          if(message.data instanceof Blob) reader.readAsDataURL(message.data)
+          });
+          if(message.data instanceof Blob) reader.readAsDataURL(message.data);
+          else {
+              var node = document.createElement("p");
+              var textnode = document.createTextNode(message.data);
+              node.appendChild(textnode);
+              document.getElementById("messages").appendChild(node);
+          }
         }
     </script>
 </body>
