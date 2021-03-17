@@ -3,7 +3,8 @@
     <title>Client</title>
 </head>
 <body>
-    <img src="">
+    <img id="top" src="">
+    <img id="bottom" src="">
     <form onsubmit="sendMessage(event)">
         <input type="text" id="name" name="name" placeholder="Name">
         <input type="text" id="message" name="message" placeholder="Message">
@@ -14,17 +15,27 @@
     </div>
     <script>
         // get img dom element
-        const img = document.querySelector('img');
+        const top_img = document.getElementById("top");
+        const bottom_img = document.getElementById("bottom");
 
         const WS_URL = location.origin.replace(/^http/, 'ws');
         const ws = new WebSocket(WS_URL);
+        i = 0;
         ws.onopen = () => console.log(`Connected to ${WS_URL}`);
         ws.onmessage = message => {
 
           let reader=new FileReader()
           reader.addEventListener('loadend',()=>{
             let contents=reader.result
-            img.src = contents
+            if(i%2 == 0)
+              {
+                 top_img.src = contents;
+              }
+            else
+              {
+                 bottom_img.src = contents;
+              }
+            i++;
           });
           if(message.data instanceof Blob) reader.readAsDataURL(message.data);
           else {
