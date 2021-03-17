@@ -5,8 +5,8 @@
 <body>
     <img src="">
     <form onsubmit="sendMessage()">
-        <input type="text" id="name">
-        <input type="text" id="message">
+        <input type="text" id="name" name="name">
+        <input type="text" id="message" name="message">
         <input type="submit" style="display: none" />
     </form>
 
@@ -45,6 +45,7 @@
             message_box.value = "";
             appendMessage(message);
             ws.send(message);
+            return false;
         }
     </script>
 </body>
