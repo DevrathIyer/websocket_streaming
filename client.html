@@ -4,9 +4,9 @@
 </head>
 <body>
     <img src="">
-    <form onsubmit="sendMessage()">
-        <input type="text" id="name" name="name">
-        <input type="text" id="message" name="message">
+    <form onsubmit="sendMessage(event)">
+        <input type="text" id="name" name="name" placeholder="Name">
+        <input type="text" id="message" name="message" placeholder="Message">
         <input type="submit" style="display: none" />
     </form>
 
@@ -32,16 +32,18 @@
           }
         }
         function appendMessage(message) {
-              var node = document.createElement("p");
-              var textnode = document.createTextNode(message);
-              node.appendChild(textnode);
-              document.getElementById("messages").appendChild(node);
+            var node = document.createElement("p");
+            var textnode = document.createTextNode(message);
+            node.appendChild(textnode);   
+            var messages = document.getElementById("messages");
+            messages.insertBefore(node, messages.firstChild);
         }
-        function sendMessage() {
-            var message_box = document.getElementbyId("message");
-            var name_box = document.getElementbyId("name");
+        function sendMessage(event) {
+            event.preventDefault();
+            var message_box = document.getElementById("message");
+            var name_box = document.getElementById("name");
 
-            var message = name_box + ": " + message_box.value;
+            var message = name_box.value + ": " + message_box.value;
             message_box.value = "";
             appendMessage(message);
             ws.send(message);
