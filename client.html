@@ -4,6 +4,8 @@
 </head>
 <body>
     <img src="">
+    <div id="messages">
+    </div>
     <script>
         // get img dom element
         const img = document.querySelector('img');
@@ -12,6 +14,12 @@
         const ws = new WebSocket(WS_URL);
         ws.onopen = () => console.log(`Connected to ${WS_URL}`);
         ws.onmessage = message => {
+
+          var node = document.createElement("p");
+          var textnode = document.createTextNode(message.data);
+          node.appendChild(textnode);
+          document.getElementById("messages").appendChild(node);
+
           let reader=new FileReader()
           reader.addEventListener('loadend',()=>{
             let contents=reader.result
