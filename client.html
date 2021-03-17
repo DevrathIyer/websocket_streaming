@@ -4,6 +4,12 @@
 </head>
 <body>
     <img src="">
+    <form onsubmit="sendMessage()">
+        <input type="text" id="name">
+        <input type="text" id="message">
+        <input type="submit" style="display: none" />
+    </form>
+
     <div id="messages">
     </div>
     <script>
@@ -22,11 +28,23 @@
           });
           if(message.data instanceof Blob) reader.readAsDataURL(message.data);
           else {
+              appendMessage(message.data);
+          }
+        }
+        function appendMessage(message) {
               var node = document.createElement("p");
-              var textnode = document.createTextNode(message.data);
+              var textnode = document.createTextNode(message);
               node.appendChild(textnode);
               document.getElementById("messages").appendChild(node);
-          }
+        }
+        function sendMessage() {
+            var message_box = document.getElementbyId("message");
+            var name_box = document.getElementbyId("name");
+
+            var message = name_box + ": " + message_box.value;
+            message_box.value = "";
+            appendMessage(message);
+            ws.send(message);
         }
     </script>
 </body>
