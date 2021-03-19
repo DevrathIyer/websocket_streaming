@@ -10,7 +10,11 @@
         <input type="text" id="message" name="message" placeholder="Message">
         <input type="submit" style="display: none" />
     </form>
-
+        <button onclick="sendEmojiMessage(':)')">&#128513</button>
+        <button onclick="sendEmojiMessage(';)')">&#128521</button>
+        <button onclick="sendEmojiMessage('>:(')">&#128544</button>
+        <button onclick="sendEmojiMessage(':0')">&#128558</button>
+        <button onclick="sendEmojiMessage(':|')">&#128511</button>
     <div id="messages">
     </div>
     <script>
@@ -56,6 +60,13 @@
 
             var message = name_box.value + ": " + message_box.value;
             message_box.value = "";
+            appendMessage(message);
+            ws.send(message);
+            return false;
+        }
+        function sendEmojiMessage(emoji) {
+            var name_box = document.getElementById("name");
+            var message = name_box.value + ": " + emoji;
             appendMessage(message);
             ws.send(message);
             return false;
