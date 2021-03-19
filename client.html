@@ -1,6 +1,33 @@
 <html>
 <head>
     <title>Client</title>
+    <style>
+body {
+  background: #002b36;
+  font-family: 'Roboto Mono', monospace;
+  color: white;
+}
+        .button {
+          color: white;
+          padding: 10px 20px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 32px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        input {
+          outline: none;
+          border: none;
+          color: white;
+          padding-top: 5px;
+          font-size: 32px;
+          font-weight: 200;
+          background: none;
+          font-family: 'Roboto Mono', monospace;
+        }
+    </style>
 </head>
 <body>
     <img id="top" style="display: block;" src="">
@@ -10,11 +37,11 @@
         <input type="text" id="message" name="message" placeholder="Message">
         <input type="submit" style="display: none" />
     </form>
-        <button onclick="sendEmojiMessage(':)')">&#128513</button>
-        <button onclick="sendEmojiMessage(';)')">&#128521</button>
-        <button onclick="sendEmojiMessage('>:(')">&#128544</button>
-        <button onclick="sendEmojiMessage(':0')">&#128558</button>
-        <button onclick="sendEmojiMessage(':|')">&#128511</button>
+        <button class="button" onclick="sendEmojiMessage(':)')">&#128513</button>
+        <button class="button" onclick="sendEmojiMessage(';)')">&#128521</button>
+        <button class="button" onclick="sendEmojiMessage('>:(')">&#128544</button>
+        <button class="button" onclick="sendEmojiMessage(':0')">&#128558</button>
+        <button class="button" onclick="sendEmojiMessage(':|')">&#128511</button>
     <div id="messages">
     </div>
     <script>
