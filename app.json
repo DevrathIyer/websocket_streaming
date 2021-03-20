@@ -1,0 +1,6 @@
+{
+  "name": "Pi in the Sky",
+  "description": "A browser interface for viewing Raspberry Pi livestream",
+  "repository": "https://github.com/DevrathIyer/websocket_streaming",
+  "keywords": ["node", "express"]
+}
