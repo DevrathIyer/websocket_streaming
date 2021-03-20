@@ -1,5 +1,7 @@
-# webcam-base64-streaming
-Webcam live streaming with WebSockets and Base64
+# Websocket Streaming for Pi in the Sky
+Webcam live streaming with WebSockets
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## Instalation
 ```text
 npm install
@@ -9,8 +11,6 @@ npm install
 npm run start
 ```
 
-- Go to */streamer*
-- Allow brower to access webcam
 - Go to */client* and a live feed will appear
 
-#### See [full article](https://medium.com/@alexcambose/webcam-live-streaming-with-websockets-and-base64-64b1b4992db8)
+#### [Adapted from](https://medium.com/@alexcambose/webcam-live-streaming-with-websockets-and-base64-64b1b4992db8)
